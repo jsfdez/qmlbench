@@ -30,7 +30,7 @@ It comes with a number of default settings which aim to help give stable numbers
 
 ##the actual benchmarks
 
-### benchmarks/creation
+### benchmark/creation
 
 This is a small suite of different creation tests. The idea is to find out how good we are with creation and destruction of objects. Both how good we are overall, and which items need more work than others. As we would like items to be light, these numbers should be high. Creating a dialog page easily involves creating 2-300 Item objects, 100 Rectangle objects, 200 Text elements, etc. And any bindings, js logic, model interaction, sql database fetching (threaded of course) comes in addition. For the items, we should strive for 1000 ops / frame on desktop machines and 100 ops / frame on medium to low end embedded. 
 
@@ -47,12 +47,12 @@ And others.. Test the basic built-in items
 
 Just run:
 
-> ./qmlbench benchmarks/creation
+> ./qmlbench benchmark/creation
 
 to run and test them all. As all tests are run 5 times and the results averaged, it will take a while :)
 
 
-### benchmarks/gputhroughput
+### benchmark/gputhroughput
 
 These benchmarks test your GPU for the most part. The QML part is mostly there to set things up and the benchmark will fill the graphics pipeline with enough stuff to make it suffer. The purpose of these benchmarks is to give an indication how how much one can expect to put on screen, and to decide how big the screen can actually be. Especially in the embedded space where a low end chip may have to drive an HD display, these tests can help to illustrate if the GPU is up to the task or not.
 
@@ -66,7 +66,7 @@ The numbers in these benchmarks mean how many times you can fill the screen. Run
 - drawcalls.qml: Take this one with a grain of salt. Graphics drivers have a lot of overhead in how drawing is set up, and seeing an individual GL call take up to a millisecond (yes, a millisecond) is not uncommon. This test is a highly constructed case to try to pinpoint the rough ballpart of how many discrete draw calls the GL stack is capable of. This is mostly important if you end up with an application that fails to do batching in the scene graph renderer, but then you will have loads of other performance problems as well, so perhaps just ignore this benchmark all together. 
 - gaussblur.qml: This benchmark is added to test how feasible live blurring is. Live blurring is an extreme fillrate test and is only something that should be considered on gaming and industrial hardware. And then you still probably want to cheat :p
 
-### benchmarks/images
+### benchmark/images
 
 These benchmarks are there to validate the casual gaming idea which should be very viable with QML. 
 
@@ -83,7 +83,7 @@ One quirk if you run these is that on a threaded renderloop, the animation one r
 
 These two benchmarks are created to illustrate why SpriteSequence should not be used for Sprite based games and serve as a benchmark for whoever steps up to improve it.
 
-### benchmarks/changes
+### benchmark/changes
 
 These benchmarks were created as a result of some painful bugreports we got about text performance. So we're testing how different types of changes in text affect the rest of the scene rendering. It is a very specific benchmark, and could be ignored by anyone which is not directly investigating scene graph internals of text drawing.
 
